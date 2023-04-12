@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<script defer="" src="https://kit.fontawesome.com/5861d7e63d.js" crossorigin="anonymous" rel="preload"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -17,7 +18,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="login.html">login</a></li>
+			<li id="log"><a href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,7 +36,8 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2>Mes Projets</h2> 
+		<a href="modales_administrateur.html#modal" class="js-modal" style="display:none;"> <i class="fa-regular fa-pen-to-square fa-xs"></i> modifier</a>
 		<div class="filtre">
 			<button id="tous">Tous</button>
 			<button id="1">Objets</button>
@@ -59,7 +61,6 @@
 		</form>
 	</section>
 </main>
-
 <footer>
 	<nav>
 		<ul>
@@ -67,6 +68,6 @@
 		</ul>
 	</nav>
 </footer>
-<script src="script.js"></script>
+<script defer src="script.js"></script>
 </body>
 </html>

@@ -361,3 +361,69 @@ footer nav ul {
   color: #b1663c;
   cursor: pointer;
 }
+
+/* modal */
+
+.modal {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: change-background 0.5s both;
+}
+
+.modal-wrapper {
+  overflow: auto;
+  width: 600px;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 20px;
+  background-color: white;
+  animation: show-modal 0.5s both;
+}
+
+.modal[aria-hidden="true"] {
+  animation: remove-background 0.5s both;
+}
+.modal[aria-hidden="true"] .modal-wrapper {
+  animation: unshow-modal 0.65s both;
+
+}
+
+@keyframes show-modal {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes unshow-modal {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(150%);
+  }
+}
+
+@keyframes change-background {
+  to {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes remove-background {
+  0% {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.0);
+  }
+}
+
