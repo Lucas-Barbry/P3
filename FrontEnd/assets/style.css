@@ -109,7 +109,7 @@ section {
 
 body {
   line-height: 1;
-  background-color: #FFFEF8;
+  background-color: #fffef8;
 }
 
 ol,
@@ -162,7 +162,7 @@ h1 {
   color: #b1663c;
 }
 
-h1>span {
+h1 > span {
   font-family: "Work Sans";
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -181,7 +181,7 @@ nav ul {
   list-style-type: none;
 }
 
-li>img {
+li > img {
   width: 20px;
   height: auto;
 }
@@ -200,7 +200,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
 
 #introduction {
   display: flex;
@@ -234,6 +233,10 @@ a {
   margin-bottom: 1em;
 }
 
+#portfolio {
+  margin-top: 140px;
+}
+
 .filtre {
   margin: 50px 0;
   display: flex;
@@ -243,7 +246,7 @@ a {
   gap: 10px;
 }
 
-.filtre>button {
+.filtre > button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,7 +264,7 @@ a {
   cursor: pointer;
 }
 
-.filtre>button.active {
+.filtre > button.active {
   background-color: #1d6154;
   color: #fff;
 }
@@ -287,7 +290,7 @@ a {
   margin: auto;
 }
 
-#contact>* {
+#contact > * {
   text-align: center;
 }
 
@@ -329,6 +332,39 @@ input[type="submit"] {
   border-radius: 60px;
 }
 
+.admin[type="submit"] {
+  margin: unset;
+  padding: 11px 23px;
+  font-family: "Work Sans";
+  color: black;
+  font-weight: 500;
+  background-color: white;
+  border-style: none;
+  cursor: pointer;
+  width: auto;
+}
+.adminForm {
+  display: flex;
+  background-color: black;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+}
+.adminForm div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.adminForm p {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 footer nav ul {
   display: flex;
   justify-content: flex-end;
@@ -364,6 +400,62 @@ footer nav ul {
 
 /* modal */
 
+.modal[aria-hidden="true"] {
+  animation: remove-background 0.5s both;
+}
+.modal[aria-hidden="true"] .modal-wrapper {
+  animation: unshow-modal 0.65s both;
+}
+
+#portfolio .admin {
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#portfolio > .admin h2 {
+  margin-bottom: unset;
+  margin-right: 30px;
+}
+
+#introduction a {
+  margin: 16px auto 0 auto;
+  width: 80%;
+}
+
+.galerie-modale {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 20px;
+}
+.delete-modale {
+  font-family: "Syne";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  text-decoration: unset;
+  color: #d65353;
+  margin-bottom: 20px;
+}
+.submit-modale {
+  font-size: 14px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  display: block;
+  cursor: pointer;
+  height: 36px;
+  width: 237px !important;
+}
+.image-editer {
+  height: 125px;
+  width: 82px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
 .modal {
   position: fixed;
   display: flex;
@@ -377,21 +469,75 @@ footer nav ul {
 }
 
 .modal-wrapper {
-  overflow: auto;
   width: 600px;
-  max-width: 100vw;
-  max-height: 100vh;
-  padding: 20px;
   background-color: white;
   animation: show-modal 0.5s both;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.js-modal-close {
+  background: transparent;
+  border: none;
+  justify-content: end;
+  display: flex;
+  width: 630px;
+
 }
 
-.modal[aria-hidden="true"] {
-  animation: remove-background 0.5s both;
-}
-.modal[aria-hidden="true"] .modal-wrapper {
-  animation: unshow-modal 0.65s both;
+#galerie-container {
+  margin-top: 46px;
+  }
 
+#image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 45px;
+}
+
+.img-container {
+  width: 78px;
+  margin-bottom: 8px;
+}
+.trait {
+  width: 420px;
+  background-color: #B3B3B3;
+  border: 1px solid #B3B3B3;
+}
+.fa-xmark {     position: relative;
+  right: 25px;
+  top: 17px;
+cursor: pointer;}
+
+
+.overflow-padding {
+  overflow-x: hidden;
+  padding-top:60px;
+}
+
+.image-with-icon {
+  position: relative;
+  bottom: 123px;
+  LEFT: 59PX;
+}
+
+.image-with-icon::before {
+  content: "\f2ed";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 9px;
+  color: white;
+  background-color: black;
+  padding: 4px;
+  border-radius: 2px;
+}
+.image-editer img {
+  display: block;
 }
 
 @keyframes show-modal {
@@ -423,7 +569,6 @@ footer nav ul {
     background: rgba(0, 0, 0, 0.8);
   }
   100% {
-    background: rgba(0, 0, 0, 0.0);
+    background: rgba(0, 0, 0, 0);
   }
 }
-

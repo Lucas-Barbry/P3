@@ -16,6 +16,7 @@ async function displayWorks() {
       const figure = document.createElement("figure");
 
       figure.setAttribute("id", work.categoryId);
+      figure.classList.add("figure-" + work.id);
       const img = document.createElement("img");
       const figcaption = document.createElement("figcaption");
 
@@ -81,7 +82,7 @@ const loadModal = async function (url) {
   const target = "#" + url.split("#")[1];
   if (loadedModals[url]) {
     return loadedModals[url];
-  }
+  } console.log("fetch")
   const html = await fetch(url).then((response) => response.text());
   const element = document
     .createRange()
@@ -114,6 +115,8 @@ const closeModal = function (e) {
   modal
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
+
+    
 };
 
 const stopPropagation = function (e) {
@@ -131,15 +134,21 @@ window.addEventListener("keydown", function (e) {
 });
 
 const adminToken = localStorage.getItem("adminToken");
-const jsModal = document.querySelector(".js-modal");
+const jsModals = document.querySelectorAll(".js-modal");
 const divFiltre = document.querySelector(".filtre")
-
 const logoutLink = document.querySelector("#log");
+const divProjets = document.querySelector(".projets")
+const adminForm = document.querySelector(".adminForm")
+const indexBody = document.querySelector("body")
 
 if (adminToken !== null && adminToken !== "") {
-  jsModal.style.display = "block";
+  jsModals.forEach(modal => modal.style.display = "block");
   logoutLink.textContent = "logout";
   divFiltre.style.display = "none";
+  divProjets.classList.add("admin");
+  indexBody.classList.add("overflow-padding")
+
+
 
   logoutLink.addEventListener("click", function (e) {
     e.preventDefault();
@@ -148,6 +157,5 @@ if (adminToken !== null && adminToken !== "") {
   });
 
 } else {
-  // si le token administrateur n'existe pas, masquer la section de l'interface d'administration
-  jsModal.style.display = "none";
+  adminForm.style.display = "none";
 }

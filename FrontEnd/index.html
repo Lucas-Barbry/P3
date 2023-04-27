@@ -12,6 +12,15 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	<form class="adminForm" action="#" method="post">
+		<div>
+			<p>
+				<i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i>
+				Mode édition
+			</p>
+			<input type="submit" class="admin" value="publier les changements">
+		</div>
+	</form>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -27,6 +36,7 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<a href="modales_administrateur.html#modal" class="js-modal" style="display:none;"> <i class="fa-regular fa-pen-to-square"></i> modifier</a>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -35,9 +45,11 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<section id="portfolio">
-		<h2>Mes Projets</h2> 
-		<a href="modales_administrateur.html#modal" class="js-modal" style="display:none;"> <i class="fa-regular fa-pen-to-square fa-xs"></i> modifier</a>
+	<section id="portfolio"> 
+		<div class="projets">
+			<h2>Mes Projets</h2>
+			<a href="modales_administrateur.html#modal" class="js-modal" style="display:none;"> <i class="fa-regular fa-pen-to-square"></i> modifier</a>
+		</div>
 		<div class="filtre">
 			<button id="tous">Tous</button>
 			<button id="1">Objets</button>
@@ -69,5 +81,6 @@
 	</nav>
 </footer>
 <script defer src="script.js"></script>
+
 </body>
 </html>
