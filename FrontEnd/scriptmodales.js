@@ -1,4 +1,5 @@
 const imageContainer = document.getElementById("image-container");
+const submitButton = document.querySelector(".submit-modale");
 
 async function images() {
   try {
@@ -66,9 +67,89 @@ async function images() {
       });
     });
 
+    
   } catch (error) {
     console.error(error);
   }
 }
 
 images();
+
+submitButton.addEventListener("click", () => {
+  const modal = document.createElement("aside");
+  modal.classList.add("modal-photo");
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-labelledby", "titlemodal");
+  modal.setAttribute("aria-modal", "true");
+  const modalApparitionDisparation = document.querySelector(".modal");
+  modalApparitionDisparation.classList.add("hidden");
+
+  const modalWrapper = document.createElement("div");
+  modalWrapper.classList.add("modal-wrapper", "js-modal-stop");
+
+  const closeButton = document.createElement("button");
+  closeButton.classList.add("js-modal-close");
+  closeButton.innerHTML = '<i class="fas fa-arrow-left" aria-hidden="true"></i><i class="fa-solid fa-xmark"></i>';
+  closeButton.addEventListener("click", () => {
+    modal.remove();
+    const modalApparitionDisparation = document.querySelector(".modal");
+    modalApparitionDisparation.classList.remove("hidden");
+  });
+
+  const modalTitle = document.createElement("p");
+  modalTitle.classList.add("galerie-modale");
+  modalTitle.textContent = "Ajout Photo";
+
+  const modalForm = document.createElement("form");
+  modalForm.classList.add("modal-form-photo");
+  modalForm.setAttribute("method", "POST");
+  modalForm.setAttribute("enctype", "multipart/form-data");
+  modalForm.innerHTML = `
+    <div class="position-form">
+      <label for="image">Image</label>
+      <input type="file" id="image" name="image" required>
+    </div>
+    <div class="position-form">
+      <label for="title">Titre</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+    <div class="position-form">
+      <label for="category">Catégorie</label>
+      <input type="text" id="category" name="category">
+    </div>
+    <div class="trait"></div>
+    <input type="submit" value="Valider" class="submit-image">
+  `;
+
+  modalWrapper.appendChild(closeButton);
+  modalWrapper.appendChild(modalTitle);
+  modalWrapper.appendChild(modalForm);
+
+  modal.appendChild(modalWrapper);
+  document.body.appendChild(modal);
+
+  closeButton.addEventListener("click", () => {
+    modal.remove();
+    const modalApparitionDisparation = document.querySelector(".modal");
+    modalApparitionDisparation.classList.remove("hidden");
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.remove();
+      const modalApparitionDisparation = document.querySelector(".modal");
+      modalApparitionDisparation.classList.remove("hidden");
+    }
+  });
+
+  modalForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // code pour ajouter l'image...
+
+    modal.remove();
+    const modalApparitionDisparation = document.querySelector(".modal");
+    modalApparitionDisparation.classList.remove("hidden");
+  });
+});
+
