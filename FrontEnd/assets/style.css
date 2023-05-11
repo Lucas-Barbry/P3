@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
 html,
 body,
 div,
@@ -310,6 +312,7 @@ a {
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  cursor: pointer;
 }
 
 #contact label {
@@ -406,6 +409,9 @@ footer nav ul {
 .modal[aria-hidden="true"] .modal-wrapper {
   animation: unshow-modal 0.65s both;
 }
+.opacity0 {
+  opacity: 0;
+}
 
 #portfolio .admin {
   margin-bottom: 90px;
@@ -454,6 +460,13 @@ footer nav ul {
   width: 82px;
   border-radius: 0px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.image-editer.pending {
+  cursor: unset;
 }
 
 .modal {
@@ -484,12 +497,11 @@ footer nav ul {
   justify-content: end;
   display: flex;
   width: 630px;
-
 }
 
 #galerie-container {
   margin-top: 46px;
-  }
+}
 
 #image-container {
   display: flex;
@@ -503,27 +515,30 @@ footer nav ul {
 .img-container {
   width: 78px;
   margin-bottom: 8px;
+  object-fit: fill;
 }
 .trait {
   width: 420px;
-  background-color: #B3B3B3;
-  border: 1px solid #B3B3B3;
+  background-color: #b3b3b3;
+  border: 1px solid #b3b3b3;
+  margin-top: 17px;
 }
-.fa-xmark {     position: relative;
+.fa-xmark {
+  position: relative;
   right: 25px;
   top: 17px;
-cursor: pointer;}
-
+  cursor: pointer;
+}
 
 .overflow-padding {
   overflow-x: hidden;
-  padding-top:60px;
+  padding-top: 60px;
 }
 
 .image-with-icon {
-  position: relative;
-  bottom: 123px;
-  LEFT: 59PX;
+  position: absolute;
+  bottom: 108px;
+  left: 59px;
 }
 
 .image-with-icon::before {
@@ -544,7 +559,8 @@ cursor: pointer;}
   border: none;
   justify-content: start;
   display: flex;
-  width: 630px;}
+  width: 630px;
+}
 
 .fa-arrow-left {
   position: relative;
@@ -576,7 +592,61 @@ cursor: pointer;}
 .hidden {
   display: none;
 }
+.clicked img {
+  opacity: 0.5;
+}
+.img-uploaded {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.position-form.container-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 169px;
+  width: 420px;
+  border-radius: 3px;
+  background-color: #e8f1f6;
+}
 
+.container-ajout-img {
+  height: 36px;
+  display: flex;
+  width: 173px;
+  border-radius: 50px;
+  justify-content: center;
+  background-color: #cbd6dc;
+  align-items: center;
+  cursor: pointer;
+  color: #306685;
+  position: relative;
+}
+
+.label-ajout-img {
+  position: relative;
+  top: 4.3px;
+}
+
+i.fa-regular.fa-image {
+  display: inline-block;
+  width: 58px;
+  height: 46px;
+  font-size: 46px;
+  text-align: center;
+  line-height: 46px;
+  color: #b9c5cc;
+}
+.regle-ajout {
+  color: #444444;
+  font-family: Work Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: center;
+}
 
 input[type="submit"].submit-image {
   font-size: 14px;
@@ -585,10 +655,36 @@ input[type="submit"].submit-image {
   display: block;
   height: 36px;
   width: 237px !important;
-  background-color: #A7A7A7;
+  background-color: #a7a7a7;
   margin: 0 auto;
 }
+input[type="submit"].submit-image.form-valid {
+  cursor: pointer;
+  background-color: #1d6154;
+}
+select {
+  background-position: right 10px center;
+}
 
+.ui-form {
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border-style: none;
+  height: 51px;
+  padding: 0 16px;
+  margin-top: 10px;
+  outline: none;
+}
+
+.ui-form,
+.ui-form * {
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #444444;
+}
 
 @keyframes show-modal {
   0% {
