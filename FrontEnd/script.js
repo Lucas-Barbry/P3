@@ -143,6 +143,7 @@ if (adminToken !== null && adminToken !== "") {
 }
 
 const adminUpdate = document.querySelector(".adminForm");
+
 adminUpdate.onsubmit = async function (e) {
   e.preventDefault();
   e.stopPropagation();
@@ -159,11 +160,13 @@ adminUpdate.onsubmit = async function (e) {
     completedRequests++;
     if (completedRequests === totalRequests) {
       await displayWorks();
+      alert("Mise à jour galerie effectuée");
     }
   };
 
   if (totalRequests === 0) {
     displayWorks();
+    alert("Aucun projet en attente de modifications");
   } else {
     for (const figure of figuresToAdd) {
       const imageInput = figure.querySelector("img");
@@ -190,6 +193,7 @@ adminUpdate.onsubmit = async function (e) {
         handleRequestCompletion();
       } catch (error) {
         console.error(error);
+        alert("Erreur lors de la mise à jour de la galerie");
       }
     }
 
@@ -210,6 +214,7 @@ adminUpdate.onsubmit = async function (e) {
         handleRequestCompletion();
       } catch (error) {
         console.error(error);
+        alert("Erreur lors de la mise à jour de la galerie");
       }
     }
   }
@@ -221,6 +226,7 @@ adminUpdate.onsubmit = async function (e) {
   images();
   return false;
 };
+
 
 function ajaxChargerModal1() {
   return async function (url) {

@@ -145,7 +145,7 @@ submitButton.addEventListener("click", () => {
     <i class="fa-regular fa-image"></i>
     <label class="container-ajout-img" id="ajout" for="image"><span class="required">+ Ajouter photo</span></label>
     <span class="regle-ajout">jpg, png : 4mo max</span>
-    <input id="image" type="file" name="image" style="display: none">
+    <input id="image" type="file" accept="image/*" name="image" style="display: none">
   </div>
     </div>
     <div class="position-form">
@@ -238,11 +238,11 @@ submitButton.addEventListener("click", () => {
       const gallery = document.querySelector(".gallery");
       gallery.appendChild(figure);
 
-      // Créer la figure pour la galerie en attente de validation
+      // Créer la figure pour la modale
       const imageContainer = document.getElementById("image-container");
-      const figureGalleryPending = document.createElement("figure");
-      figureGalleryPending.classList.add("image-editer");
-      figureGalleryPending.classList.add("pending");
+      const figureModalePending = document.createElement("figure");
+      figureModalePending.classList.add("image-editer");
+      figureModalePending.classList.add("pending");
 
       // Ajouter l'image à la figure pour la galerie en attente de validation
       const imgGalleryPending = document.createElement("img");
@@ -252,26 +252,28 @@ submitButton.addEventListener("click", () => {
         window.URL.createObjectURL(imageInput.files[0])
       );
       imgGalleryPending.setAttribute("alt", titleInput.value);
-      figureGalleryPending.appendChild(imgGalleryPending);
+      figureModalePending.appendChild(imgGalleryPending);
 
       // Ajouter la légende à la figure pour la galerie en attente de validation
       const figcaptionGalleryPending = document.createElement("figcaption");
       figcaptionGalleryPending.classList.add("figcaption-container");
       figcaptionGalleryPending.textContent = "pending";
-      figureGalleryPending.appendChild(figcaptionGalleryPending);
+      figureModalePending.appendChild(figcaptionGalleryPending);
 
-      // Ajouter la figure pour la galerie en attente de validation à la section appropriée
-      imageContainer.appendChild(figureGalleryPending);
+      // Ajouter la figureen attente de validation à la section appropriée
+      imageContainer.appendChild(figureModalePending);
 
-      // Ajouter un gestionnaire d'événements pour la soumission du formulaire
 
       const arrowLeftReturnAfterSubmit = document.querySelector(
         "aside.modal-photo button.js-modal-close i.fas.fa-arrow-left"
       );
 
       arrowLeftReturnAfterSubmit.click();
+      alert("Projet ajouté avec succès ! Finalisez l'ajout en cliquant sur le bouton 'Publier les changements' en haut de page.");
     } catch (error) {
       console.error(error);
+      alert("Erreur lors de l'ajout du projet local");
+
     }
   });
 
