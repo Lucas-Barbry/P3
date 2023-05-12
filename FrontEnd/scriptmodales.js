@@ -1,9 +1,7 @@
 const imageContainer = document.getElementById("image-container");
 const submitButton = document.querySelector(".submit-modale");
 
-
 async function images() {
-  
   try {
     const response = await fetch("http://localhost:5678/api/works");
     const data = await response.json();
@@ -140,7 +138,6 @@ submitButton.addEventListener("click", () => {
 
   const modalForm = document.createElement("form");
   modalForm.classList.add("modal-form-photo");
-  modalForm.setAttribute("method", "POST");
   modalForm.setAttribute("enctype", "multipart/form-data");
   modalForm.innerHTML = `
     <div class="position-form container-img">
@@ -279,7 +276,6 @@ submitButton.addEventListener("click", () => {
   });
 
   const formAjoutPhoto = document.querySelector(".modal-form-photo");
-  const modalAjoutPhoto = document.querySelector(".modal-photo");
 
   formAjoutPhoto.addEventListener("input", () => {
     const imageInput = document.getElementById("image").files[0];
@@ -299,9 +295,3 @@ submitButton.addEventListener("click", () => {
     }
   });
 });
-
-/*window.addEventListener("beforeunload", function (event) {
-  event.preventDefault();
-  event.returnValue = "";
-});*/
-

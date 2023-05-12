@@ -1,8 +1,8 @@
 const buttons = document.querySelectorAll(".filtre > button");
 const gallery = document.querySelector(".gallery");
 
-const form = document.querySelector('.adminForm');
-form.addEventListener('submit', (event) => {
+const form = document.querySelector(".adminForm");
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 });
 async function displayWorks() {
@@ -16,7 +16,7 @@ async function displayWorks() {
       const title = work.title;
       const imageUrl = work.imageUrl;
 
-      const figure = document.createElement("figure");  
+      const figure = document.createElement("figure");
 
       figure.setAttribute("id", work.categoryId);
       figure.classList.add("figure-" + work.id);
@@ -142,10 +142,10 @@ if (adminToken !== null && adminToken !== "") {
   adminForm.style.display = "none";
 }
 
-const adminUpdate = document.querySelector(".admin");
-adminUpdate.onclick = async function(e) {
+const adminUpdate = document.querySelector(".adminForm");
+adminUpdate.onsubmit = async function (e) {
   e.preventDefault();
-  
+  e.stopPropagation();
 
   const gallery = document.querySelector(".gallery");
   const figuresToAdd = gallery.querySelectorAll(".attente-validation");
@@ -155,10 +155,10 @@ adminUpdate.onclick = async function(e) {
   const totalRequests = figuresToAdd.length + figuresToDelete.length;
   let completedRequests = 0;
 
-  const handleRequestCompletion = function () {
+  const handleRequestCompletion = async function () {
     completedRequests++;
     if (completedRequests === totalRequests) {
-      displayWorks();
+      await displayWorks();
     }
   };
 
@@ -219,7 +219,8 @@ adminUpdate.onclick = async function(e) {
   const imageContainer = document.querySelector("#image-container");
   imageContainer.innerHTML = "";
   images();
-}
+  return false;
+};
 
 function ajaxChargerModal1() {
   return async function (url) {
